@@ -15,16 +15,16 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->boolean('enabled')->default(true);
+            $table->boolean('enabled')->default(true)->comment('Включен/выключен продукт');
             $table->foreignId('category_id')
                 ->constrained()
                 ->onUpdate('CASCADE')
                 ->onDelete('SET NULL');
-            $table->string('articul')->nullable();
-            $table->string('title')->default('');
-            $table->text('description')->nullable();
-            $table->bigInteger('price')->default(0);
-            $table->integer('count')->default(0);
+            $table->string('articul')->nullable()->comment('Актикул продукта');
+            $table->string('title')->default('')->comment('Наименование продукта');
+            $table->text('description')->nullable()->comment('Описание продукта');
+            $table->bigInteger('price')->default(0)->comment('Стоимость продукта');
+            $table->integer('count')->default(0)->comment('Кол-во едениц в наличии');
             $table->timestamps();
         });
     }

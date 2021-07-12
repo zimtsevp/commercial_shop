@@ -15,9 +15,9 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->boolean('enabled')->default(true);
-            $table->string('title');
-            $table->string('slug');
+            $table->boolean('enabled')->default(true)->comment('Включена/выключена категория');
+            $table->string('title')->comment('Наименование категории');
+            $table->string('slug')->comment('Ссылка категории');
             $table->timestamps();
         });
     }
